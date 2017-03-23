@@ -73,7 +73,7 @@ $(document).ready(function() {
 
         // Constructing a URL to search Giphy for the topic 
         // var queryURL = "https://crossorigin.me/https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=dc6zaTOxFJmzC&limit=12";
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC"   
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=funny+cat&api_key=dc6zaTOxFJmzC"   
         console.log(queryURL);
 
         //Creating an AJAX call for a specific topic button to be clicked
