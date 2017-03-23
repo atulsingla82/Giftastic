@@ -72,7 +72,7 @@ $(document).ready(function() {
 
 
         // Constructing a URL to search Giphy for the topic 
-        var queryURL = "https://crossorigin.me/http://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=dc6zaTOxFJmzC&limit=12";
+        var queryURL = "https://crossorigin.me/https://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=dc6zaTOxFJmzC&limit=12";
 
         console.log(queryURL);
 
