@@ -8,188 +8,62 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="navbar">
         <center>
-            <h2> GifTastic </h2> </center>
+            <h2> Gif-Tastic </h2> </center>
     </div>
     <br>
     <br>
     <!-- Rendered buttons will get dumped Here  -->
- 
-
-    <div id="buttons-view"> </div>
-
-    <!-- Button triggers new topic to be added -->
-    <br>
-    <br>
-
-    <form id="topic-form">
-        <div class="form-group">
-            <label for="names">Search new topics here...</label>
-            <input type="text" id="topic-input">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="buttons-view"> </div>
+            </div>
         </div>
-        <input id="add-topic" class="btn btn-success" type="submit" value="Add em in">
-    </form>
-
-    <!-- Gifs get dumped here -->
-    <div id="gifs-view"></div>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js">
-    </script>
-
-
-    <script type="text/javascript">
-    //===============================
-
-
-    // Initial array of random topics
-
-    var names = ["this is a test","alien", "wolverine", "beagle", "beast", "trump", "dracula"];
-
-    //
-
-
-    //============================================================================
-
-    // Display Info function re-renders the HTML to display the appropriate content
-
-    function displayNames() {
-
-
-        var name = $(this).attr("data-state");
-
-
-
-        // Constructing a URL to search Giphy for the topic 
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + name + "&api_key=dc6zaTOxFJmzC&limit=10";
-
-        console.log(queryURL);
-
-        //Creating an AJAX call for a specific topic button to be clicked
-
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-
-
-
-        // after the data comes back from request
-        .done(function(response) {
-
-
-            console.log(response);
-
-
-            // Storing data from Ajax request
-            var results = response.data;
-
-            for (var i = 0; i < results.length; i++) {
-
-                // Creating a Div to hold the selection
-                var topicDiv = $("<div class='names'>");
-
-                // Elemet to Store and display the rating info
-
-                var p = $("<p>").text("Rating:" + results[i].rating);
-
-                //Creating and storing the image tag
-
-                var topicImage = $("<img >");
-
-                // Setting the src attribute of the image to a property pulled off the result item
-
-                topicImage.attr("src", results[i].images.fixed_height.url);
-
-                
-                 
-                
-
-                // Appending the paragraph and image tag to the animalDiv
-                topicDiv.append(p);
-                topicDiv.append(topicImage);
-
-                $("#gifs-view").prepend(topicDiv);
-
-            }
-
-            renderButtons();
-        });
-    }
-
-
-
-
-    //=============================================================
-
-
-
-    // Function to display the data on page
-
-    function renderButtons() {
-
-        $("#buttons-view").empty();
-
-        // looping thorugh the array of topics
-
-        for (var i = 0; i < names.length; i++) {
-
-            // Dynamically generate buttons for the array 
-
-            var a = $("<button class='btn btn-info name'>");
-
-
-
-            // adding data-attribute 
-            a.attr("data-state", names[i]);
-
-            // adding text to the buttons 
-            a.text(names[i]);
-
-            // adding the button to the buttons-view div
-            $("#buttons-view").append(a);
-
+        <!-- Button triggers new topic to be added -->
+        <br>
+        <br>
+        <form id="topic-form">
+            <div class="form-group">
+                <label for="names">Search new topics here...</label>
+                <input type="text" id="topic-input">
+            </div>
+            <input id="add-topic" class="btn btn-success" type="submit" value="Add em in">
+        </form>
+        <br>
+        <br>
+        <!-- Gifs get dumped here -->
+        <div id="gifs-view"></div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <!-- CSS ============================ -->
+        <style>
+        body {
+            background-color: grey;
         }
-
-    }
-
-    //===================================================  
-
-    // Events when "add them in " button is clicked 
-
-    $("#add-topic").on("click", function(event) {
-
-        event.preventDefault();
-
-        var topic = $("#topic-input").val().trim();
-
-        // adding topic from text box to the array
-
-        names.push(topic);
-
-        // calling on the render buttons
-        renderButtons();
-
-
-    });
-    // Adding a click event listener to all elements with a class of "name"
-    $(document).on("click", ".name", displayNames);
-
-    renderButtons();
-    </script>
-    <!-- CSS ============================ -->
-    <style>
-    body {
-        margin: 20px;
-    }
-    
-    .btn-info {
-        color: black;
-        margin: 5px;
-        background-color: rgba(51, 122, 183, 0.45);
-        border-color: rgba(236, 19, 12, 0.71);
-    }
-    </style>
+        
+        .btn-info {
+            font-size: 20px;
+            color: black;
+            margin: 5px;
+            background-color: rgb(51, 122, 183);
+            border-color: rgba(236, 19, 12, 0.71);
+        }
+        
+        label {
+            font-size: 20px;
+        }
+        
+        .btn-success {
+            font-size: 20px;
+        }
+        
+        p {
+            font-size: 20px;
+            color: white;
+        }
+        </style>
 </body>
 
 </html>
