@@ -60,10 +60,8 @@ $(document).ready(function() {
     //============================================================================
 
 
-    // Display Info function re-renders the HTML to display the appropriate content
+    // On click function re-renders the HTML to display the appropriate content
 
-
-    // function displayGifs() {
 
     $(document.body).on("click", ".name", function() {
 
@@ -147,7 +145,7 @@ $(document).ready(function() {
     });
 
     //========================================================================
-
+    // Gif on click fuinction to play/pause the gifs
 
 
     $(document.body).on("click", ".gif", function() {
